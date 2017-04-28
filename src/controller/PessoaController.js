@@ -22,9 +22,14 @@ var pessoaController = function(pessoaModel){
 			res.status(400);
 			res.send(msgObrigatorio);
 		} else {
-			pessoa.dataCriacao = moment().second(0).millisecond(0).format();
+			pessoa.dataCriacao = moment().second(0).millisecond(0).utc().format();
+			
 			if(pessoa.senha){
 				pessoa.senha = md5(pessoa.senha);
+			}
+
+			if(pessoa.dataNascimento){
+				pessoa.dataNascimento = moment().utc(pessoa.dataNascimento).format();	
 			}
 			
 			pessoa.save();
@@ -50,6 +55,8 @@ var pessoaController = function(pessoaModel){
 		pessoa.nomeMae = req.body.nomeMae;
 		pessoa.estadoCivil = req.body.estadoCivil;
 		pessoa.email = req.body.email;
+		pessoa.cpf = req.body.cpf;
+		pessoa.rg = req.body.rg;
 		pessoa.telefone = req.body.telefone;
 		pessoa.celular = req.body.celular;
 		pessoa.login = req.body.login;

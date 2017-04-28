@@ -7,6 +7,10 @@ var pessoaModel = new Schema({
 	nome:{ type:String},
 	sobrenome: {type: String},
 	dataNascimento:{ type: Date},
+	cpf: {type: String},
+	rg: {type: String},
+	documento_extra1: {type: String},
+	documento_extra2: {type: String},
 	sexo:{ type: String},
 	nomeMae:{type:String},
 	matricula :{type:String}, 
@@ -20,4 +24,4 @@ var pessoaModel = new Schema({
 	ativo:{type:Boolean, default: true}
 });
 
-module.exports = mongoose.model('Evento', pessoaModel);
+module.exports = mongoose.model('Pessoa', pessoaModel);
