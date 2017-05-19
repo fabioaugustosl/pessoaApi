@@ -15,7 +15,7 @@ gulp.task('default', [], function(){
 		script: 'app.js',
 		delayTime: 1,
 		env: {
-			'PORT' : 3000
+			'PORT' : 3001
 		},
 		ignore: ['./nome_modules/**'],
 		watch: jsFiles
