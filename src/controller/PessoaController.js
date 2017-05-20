@@ -123,7 +123,7 @@ var pessoaController = function(pessoaModel){
 			}
 
 			if(req.query.cpf){
-				query.push({documentcpf : req.query.cpf});
+				query.push({cpf : req.query.cpf});
 			}
 
 			if(req.query.rg){
@@ -160,6 +160,10 @@ var pessoaController = function(pessoaModel){
 
 			if(req.query.nome){
 				query.push({nome : RegExp(req.query.nome, "i") });
+			}	
+
+			if(req.query.login){
+				query.push({login : req.query.login});
 			}	
 		}
 		 

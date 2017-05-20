@@ -24,6 +24,7 @@ var pessoaModel = new Schema({
 	celular: {type:String},
 	login: {type:String},
 	senha: {type:String},
+	perfil: {type:String},
 	dataCriacao:{ type: Date, default: Date.now },
 	ativo:{type:Boolean, default: true}
 });
