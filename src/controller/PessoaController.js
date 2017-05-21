@@ -114,6 +114,12 @@ var pessoaController = function(pessoaModel){
 	var listar = function(req, res){
 		console.log(' ::: Listar pessoa');
 
+		var limite = 1000;
+		if(req.query.limite){
+			limite = req.query.limite;
+		}
+		console.log(limite);
+
 		var query = [];
 
 		if(req.query){
@@ -188,7 +194,7 @@ var pessoaController = function(pessoaModel){
 
 				res.json(returnpessoas);
 			}
-		});
+		}).limit(limite);
 	};
 
 
