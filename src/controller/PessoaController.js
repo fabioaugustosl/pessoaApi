@@ -170,7 +170,9 @@ var pessoaController = function(pessoaModel){
 
 			if(req.query.login){
 				query.push({login : req.query.login});
-			}	
+			} else {
+				query.push({ login:  null});
+			}
 		}
 		 
 		console.log(query);
