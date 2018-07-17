@@ -7,7 +7,8 @@ var mongoose = require('mongoose');
 
 var app = express();
 
-var db = mongoose.connect('mongodb://some-mongo/db_pessoa');
+var db = mongoose.connect('mongodb://localhost/db_pessoa');
+//var db = mongoose.connect('mongodb://some-mongo/db_pessoa');
 
 
 var port = process.env.PORT || 3003;
@@ -25,22 +26,10 @@ app.use(bodyParser.json());
 
 //isso funcionou localhost
 app.use(function (req, res, next) {
-
-    // Website you wish to allow to connect
-    //res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8000');
     res.setHeader('Access-Control-Allow-Origin', '*');
-
-    // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-    // Request headers you wish to allow
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
     res.setHeader('Access-Control-Allow-Credentials', true);
-
-    // Pass to next layer of middleware
     next();
 });
 
@@ -48,12 +37,8 @@ app.use(function (req, res, next) {
 
 app.set('views','./src/views');
 
-// template engine
-//app.set('view engine', 'ejs');
-
 
 //rotas
-
 var pessoaRouter = require('./src/routes/PessoaRoutes');
 var enderecoRouter = require('./src/routes/EnderecoPessoaRoutes');
 
@@ -62,7 +47,6 @@ app.use('/api/enderecoPessoa/v1', enderecoRouter);
 
 
 app.get('/', function(req, res){
-	//res.render('index');
 	res.send('de buenas pessoas');
 	console.log('de buenas pessoas');
 });
